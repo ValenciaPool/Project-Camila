@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camila - Poster</title>
+    <style>
+      /* Estilos para el contenedor de la carta */
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #ffe1f9; /* Fondo pastel */
+      }
+
+      /* Estilos para la carta */
+      .card {
+        width: 800px; /* Ancho exacto */
+        height: 556px; /* Alto exacto */
+        max-width: 90vw; /* Responsive: limita el ancho en pantallas pequeñas */
+        max-height: 90vh; /* Responsive: limita la altura en pantallas pequeñas */
+        border: 5px solid #d18391; /* Borde rosado pastel */
+        border-radius: 15px; /* Bordes redondeados */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        animation: wave 2s infinite ease-in-out; /* Animación de saludo */
+        overflow: hidden; /* Evita que la imagen se desborde */
+        position: relative; /* Necesario para posicionar los GIFs y el botón */
+      }
+
+      /* Estilos para la imagen dentro de la carta */
+      .card img {
+        width: 100%; /* Ocupa el 100% del ancho del contenedor */
+        height: 100%; /* Ocupa el 100% de la altura del contenedor */
+        object-fit: contain; /* Ajusta la imagen sin recortarla */
+      }
+
+      /* Contenedores para los GIFs dentro de la carta */
+      .gif-top-left,
+      .gif-bottom-right {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .gif-top-left {
+        top: 40px; /* Más espacio desde arriba */
+        left: 40px; /* Más espacio desde la izquierda */
+        background-image: url('./src/img/bear-kisses.gif'); /* GIF de ejemplo en la esquina superior izquierda */
+      }
+
+      .gif-bottom-right {
+        bottom: 40px; /* Más espacio desde abajo */
+        right: 40px; /* Más espacio desde la derecha */
+        background-image: url('./src/img/cute-bear-loop.gif'); /* GIF de ejemplo en la esquina inferior derecha */
+      }
+
+      /* Estilos para el botón Confirmar */
+      .confirm-btn {
+        position: absolute;
+        bottom: 20px; /* Espacio desde la parte inferior */
+        left: 50%; /* Centrado horizontalmente */
+        transform: translateX(-50%); /* Centrado exacto */
+        font-family: Poppins-Medium, sans-serif;
+        background-color: var(--btn-pastel-color); /* Usa el color rosado pastel */
+        color: var(--btn-text-color); /* Texto blanco */
+        border: none;
+        padding: 10px 20px;
+        border-radius: var(--radius-btn); /* Usa el radio definido en :root */
+        cursor: pointer;
+        transition: all 0.3s ease; /* Transición suave */
+        z-index: 1; /* Asegura que esté sobre la imagen */
+      }
+
+      .confirm-btn:hover {
+        background-color: var(--btn-pastel-hover); /* Hover más oscuro */
+      }
+
+      /* Animación de movimiento leve (saludo) */
+      @keyframes wave {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(2deg);
+        }
+        75% {
+          transform: rotate(-2deg);
+        }
+      }
+
+      /* Ajustes responsive */
+      @media (max-width: 856px) {
+        .card {
+          width: 100%; /* Ocupa el 100% del ancho disponible */
+          height: auto; /* Altura automática para mantener la proporción */
+          aspect-ratio: 1777 / 1250; /* Mantiene la proporción de la carta */
+        }
+
+        .gif-top-left,
+        .gif-bottom-right {
+          width: 100px;
+          height: 100px;
+        }
+
+        .confirm-btn {
+          padding: 8px 16px; /* Botón más pequeño en pantallas medianas */
+          bottom: 15px; /* Menos espacio en pantallas medianas */
+        }
+      }
+
+      @media (max-width: 575px) {
+        .card {
+          border-width: 3px; /* Borde más delgado en móviles */
+        }
+
+        .gif-top-left,
+        .gif-bottom-right {
+          width: 80px;
+          height: 80px;
+          top: 20px; /* Menos espacio en móviles */
+          left: 20px; /* Menos espacio en móviles */
+          bottom: 20px; /* Menos espacio en móviles */
+          right: 20px; /* Menos espacio en móviles */
+        }
+
+        .confirm-btn {
+          padding: 6px 12px; /* Botón aún más pequeño en móviles */
+          bottom: 10px; /* Menos espacio en móviles */
+        }
+      }
+
+      :root {
+        --background-color: #ffe1f9;
+        --btn-primary-color: #53d84e;
+        --btn-secondary-color: #ff6e6e;
+        --btn-reset-color: #4c6be6;
+        --btn-pastel-color: #d18391; /* Color rosado pastel */
+        --btn-primary-hover: #4fb63d;
+        --btn-secondary-hover: #d44e4e;
+        --btn-reset-hover: #3a4dbd;
+        --btn-pastel-hover: #ffb1bb; /* Hover más oscuro para el pastel */
+        --btn-text-color: #fff;
+        --radius-btn: 5px;
+      }
+
+      @font-face {
+        font-family: Poppins-Regular;
+        src: url("../src/fonts/poppins/Poppins-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: Poppins-Medium;
+        src: url("../src/fonts/poppins/Poppins-Medium.ttf");
+      }
+
+      @font-face {
+        font-family: Poppins-Bold;
+        src: url("../src/fonts/poppins/Poppins-Bold.ttf");
+      }
+
+      @font-face {
+        font-family: Poppins-SemiBold;
+        src: url("../src/fonts/poppins/Poppins-SemiBold.ttf");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor de la carta -->
+    <div class="card-container">
+      <div class="card">
+        <!-- Imagen dentro de la carta -->
+        <img src="./src/img/poster.jpg" alt="Poster" />
+        <!-- Espacios para los GIFs -->
+        <div class="gif-top-left"></div>
+        <div class="gif-bottom-right"></div>
+        <!-- Botón Confirmar -->
+        <button class="confirm-btn" onclick="window.location.href='Final.html'">Confirmar</button>
+      </div>
+    </div>
+  </body>
+</html>
